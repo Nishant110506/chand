@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>💕 My CHAND 🌕</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="sparkles" aria-hidden="true"></canvas>
+  <main class="app-shell">
+    <header class="topbar">
+      <div><p class="eyebrow">A tiny book of us</p><h1>Memory Book</h1></div>
+      <button class="soft-button" id="customizeToggle" type="button">Customize</button>
+    </header>
+    <section class="book-stage" aria-label="Interactive memory book">
+      <button class="nav-button prev" id="prevPage" type="button" aria-label="Previous page">‹</button>
+      <div class="book" id="book">
+        <article class="cover page is-visible">
+          <div class="cover-art"></div>
+          <p>Tap next to open</p>
+          <h2>For My Favorite Person</h2>
+          <span>made with little stars, soft colors, and all the memories</span>
+        </article>
+      </div>
+      <button class="nav-button next" id="nextPage" type="button" aria-label="Next page">›</button>
+    </section>
+    <footer class="page-count" id="pageCount">Cover</footer>
+  </main>
+  <aside class="customizer" id="customizer" aria-label="Customize page panel">
+    <div class="panel-head"><div><p class="eyebrow">Creator mode</p><h2>Edit this page</h2></div><button class="icon-button" id="closeCustomizer" type="button" aria-label="Close">×</button></div>
+    <label>Photo <select id="photoInput">
+    <option value="">Choose an image</option>
+    <option value="images/Image 1 (1).jpeg">Image 1</option>
+    <option value="images/Image 1 (2).jpeg">Image 2</option>
+    <option value="images/Image 1 (3).jpeg">Image 3</option>
+    <option value="images/Image 1 (4).jpeg">Image 4</option>
+    <option value="images/Image 1 (5).jpeg">Image 5</option>
+    <option value="images/Image 1 (6).jpeg">Image 6</option>
+    <option value="images/Image 1 (7).jpeg">Image 7</option>
+    <option value="images/Image 1 (8).jpeg">Image 8</option>
+    <option value="images/Image 1 (9).jpeg">Image 9</option>
+    <option value="images/Image 1 (10).jpeg">Image 10</option>
+    <option value="images/Image 1 (11).jpeg">Image 11</option>
+    <option value="images/Image 1 (12).jpeg">Image 12</option>
+    <option value="images/Image 1 (13).jpeg">Image 13</option>
+    <option value="images/Image 1 (14).jpeg">Image 14</option>
+    <option value="images/Image 1 (15).jpeg">Image 15</option>
+</select></label>
+    <label>Message <textarea id="messageInput" rows="4"></textarea></label>
+    <label>Cute font <select id="fontInput"><option value="'Segoe Print', 'Comic Sans MS', cursive">Soft handwritten</option><option value="'Bradley Hand ITC', 'Comic Sans MS', cursive">Sweet note</option><option value="'Trebuchet MS', 'Arial Rounded MT Bold', sans-serif">Bubble clean</option><option value="Georgia, 'Times New Roman', serif">Storybook</option><option value="'Lucida Handwriting', 'Segoe Print', cursive">Letter style</option></select></label>
+    <div class="range-row"><label>Image size <input id="scaleInput" type="range" min="82" max="122" value="100"></label><label>Border <input id="borderInput" type="range" min="0" max="18" value="8"></label></div>
+    <div class="range-row"><label>Border color <input id="borderColorInput" type="color" value="#fff7fb"></label><label>Page glow <input id="pageColorInput" type="color" value="#ffd3ea"></label></div>
+    <label class="checkline"><input id="oldCoverInput" type="checkbox"> Put this photo in an old cover frame</label>
+    <label class="checkline"><input id="blendInput" type="checkbox"> Blend photo color into the page</label>
+    <div class="panel-actions"><button class="soft-button" id="resetPage" type="button">Reset page</button><button class="primary-button" id="saveBook" type="button">Save</button></div>
+  </aside>
+  <dialog class="lightbox" id="lightbox"><button class="icon-button close-lightbox" id="closeLightbox" type="button" aria-label="Close">×</button><img id="fullImage" alt="Full view memory"><label>Zoom <input id="zoomInput" type="range" min="70" max="160" value="100"></label></dialog>
+  <template id="pageTemplate"><article class="page memory-page"><div class="page-bg"></div><div class="photo-wrap"><img class="memory-photo" alt=""></div><p class="memory-message"></p><div class="doodle one"></div><div class="doodle two"></div></article></template>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/song.mp3" type="audio/mpeg">
+</audio>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDw6OqubqmpAdTGF3fltdtZvYjqpGvMxY0",
+  authDomain: "friend-f5829.firebaseapp.com",
+  projectId: "friend-f5829",
+  storageBucket: "friend-f5829.firebasestorage.app",
+  messagingSenderId: "619713028",
+  appId: "1:619713028:web:ac7f02afe59cb6ada5db51",
+  measurementId: "G-5GHLMWXTJL"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+const storage = firebase.storage();
+</script>
+  <script src="script.js"></script>
+</body>
+</html>
