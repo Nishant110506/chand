@@ -64,7 +64,7 @@ const defaultPages = defaultPageSource.map(([message, pageColor, photo], index) 
 let pages = [];
 let currentIndex = 0;
 let previousIndex = 0;
-let creatorMode = false;
+let creatorMode = true;
 
 /* ----------------------------------------------------------
    DOM references
